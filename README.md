@@ -6,24 +6,29 @@ Step 2: Filter SNPs to determine boundary points for putative inversions in the 
 Step 3: Refine boundaries for inversions
 
 ## Program Description:
-Starter code provided by course instructor. Functions that were modified to improve accuracy and efficiency are indicated below in parantheses: 
+Starter code provided by course instructor. Functions that were modified to improve accuracy and efficiency are indicated in italics: 
 
-**read_reads**(edited to improve speed of processing input reads): 
+**read_reads** _edited to improve speed of processing input reads by a factor of 10_: 
 takes in reads from input file and places in array 
 
-_read_reference_: process input genome provided as reference 
+**read_reference**: process input genome provided as reference 
 
-_pretty_print_aligned_reads_with_ref_: display alignment of reads to reference  
+**pretty_print_aligned_reads_with_ref**: display alignment of reads to reference  
 
-_generate_pileup_ (method for SNP detection replaced to account for misaligned reads and to account for coverage. That is, portions of  the genome with poor coverage were treated more cautiously. The detection of inverions using a dynamic programming approach was also implemented here.): Interprets alignment of reads to reference to determine SNPs, INDELS, and STRs. 
+**generate_pileup** _method for SNP detection replaced to account for misaligned reads and to account for coverage. That is, portions of  the genome with poor coverage were treated more cautiously. The detection of inverions using a dynamic programming approach was also implemented here._: Interprets alignment of reads to reference to determine SNPs, INDELS, and STRs. 
 
-_process_lines_
+**process_lines**: Analyzes given segment of genome from reference and donor reads aligned to that reference segment. Calls the indentity_changes function to find differences between ref and donor for given segment.
 
-_align_to_donor_
+**align_to_donor** _implemented filtering method to throw out poorly aligned reads/erroneous reads that were not detected in a previous step_: Returns index for location in reference sequence where the given read aligns best 
 
-_generate_donor_:Generate 
-_edit_distance matrix_
-_identify_changes_
-_consensus_
+**generate_donor** _improved accuracy_: Returns a string for the donor sequences based on high coverage regions of sequence alignment. The reference sequence is used to fill in gaps.
+
+**edit_distance matrix** _ improved dynamic programming scoring method_: Dynamic programming matrix used to find optimal location to align given read on the reference.
+
+**identify_changes**: Indentify which bases in the reference sequence were changed to what base in the donor sequence. Returns location and identity of indels.
+
+**consensus**: Uses read aligned to reference alone to generate a consensus sequence. Does not take reference into account. 
+
+
 
 
